@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hair Care Site</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+      <span>Welcome <%=user.email%></span>
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+<div> 
+  <h2>Your Recommendations</h2>
+  <% for (let i=0; i<salon.length; i++) { %>
+  <p> for <%= salon[i].recommendation[0].hairtype %> Hair: <%= salon[i].recommendation[0].name %> </p> 
+  <img src="img/<%= salon[i].recommendation[0].image%>">
+  <span> <%= salon[i].recommendation[0].description %> </span> 
+
+ <% }%>
+ 
+</div>
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+            <a href="/login"></a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <h2>Select Hair Type</h2>
+        <% if (user.email) { %>
+          <form action="/submit" method="POST">
+            <select name="hairtype"> 
+              <option value="straight">Straight</option>
+              <option value="wavy">Wavy</option>
+              <option value="curly">Curly</option>
+              <option value="kinky curly">Kinky Curly</option>
+            </select>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
